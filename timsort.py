@@ -12,19 +12,16 @@ def insertion_sort(arr, left, right):
             j -= 1
         arr[j + 1] = key
 
-# Merge Sort implementation with a threshold for switching to insertion sort
 def merge_sort(arr, left, right, k):
     if right - left + 1 <= k:
-        # Use insertion sort for small subarrays
         insertion_sort(arr, left, right)
     else:
         if left < right:
             mid = (left + right) // 2
-            merge_sort(arr, left, mid, k)  # Left half
-            merge_sort(arr, mid + 1, right, k)  # Right half
-            merge(arr, left, mid, right)  # Merge the two halves
+            merge_sort(arr, left, mid, k)  
+            merge_sort(arr, mid + 1, right, k)  
+            merge(arr, left, mid, right) 
 
-# Merge function to merge two sorted subarrays
 def merge(arr, left, mid, right):
     n1 = mid - left + 1
     n2 = right - mid
